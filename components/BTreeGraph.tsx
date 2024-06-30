@@ -1,45 +1,59 @@
 "use client"
 
 import { BTreeGraphNode } from "@/components/BTreeGraphNode";
-import { BTreeNode, BTree } from "@/lib/TwoThreeTree";
+import { TreeLayout } from "@/lib/TreeLayout";
+import React, { useRef, useImperativeHandle, forwardRef, ForwardRefRenderFunction } from "react";
+import clsx from "clsx";
 
-export const BTreeGraph = () => {
 
-    const spacingX = 40;
-    const spacingY = 60;
-    const offsetY = 20;
-    let tree = new BTree(1);
-    tree.insert(2);
-    tree.insert(3);
-    tree.insert(4);
-    tree.insert(5);
-    tree.insert(6);
-    tree.insert(7);
-    tree.insert(8);
-    tree.insert(9);
+export type BTreeGraphHandle = {
+    downloadSvg: () => void;
+}
 
-    const treeLayout = tree.layout();
-    const nodeLayouts = treeLayout.layout;
-    const svgHeight = treeLayout.heightUnits * spacingY + (2 * offsetY);
-    const svgWidth = treeLayout.widthUnits * spacingX * 2;
+type BTreeGraphProps = {
+    treeLayout: TreeLayout,
+    nodeColor: string,
+    edgeColor: string,
+    textColor: string,
+    className?: string
+}
+
+const BTreeGraph: ForwardRefRenderFunction<BTreeGraphHandle, BTreeGraphProps>  = ({ treeLayout, nodeColor, edgeColor, textColor, className }, ref) => {
+    const svgRef = useRef<SVGSVGElement | null>(null);
+
+    useImperativeHandle(ref, () => {
+        return {
+            downloadSvg() {
+                if (svgRef.current) {
+                    const svgContent = svgRef.current.outerHTML.replaceAll('stroke="white"', 'stroke="black"');
+                    const a = document.createElement("a");
+                    const blob = new Blob([svgContent], { type: "image/svg+xml" });
+                    const url = URL.createObjectURL(blob);
+                    a.setAttribute("href", url);
+                    a.setAttribute("download", "tree_visualization.svg");
+                    a.click();
+                }
+            }
+        }
+    });
 
     return (
-        <div>
+        <div className={clsx("relative", className)}>
             <svg
-                height={svgHeight}
-                width={svgWidth}
+                xmlns="http://www.w3.org/2000/svg"
+                ref={svgRef}
+                className="h-full w-full"
+                viewBox={`0 0 ${treeLayout.width} ${treeLayout.height}`}
             >
-                {nodeLayouts.map(layout => {
-                    if (layout.parentPos) {
-                        return <line key={`${layout.posX}${layout.posY}`} x1={spacingX * layout.posX} x2={spacingX * layout.parentPos.posX} y1={spacingY * layout.posY + offsetY} y2={spacingY * layout.parentPos.posY + offsetY} stroke="white" />
-                    } else {
-                        return <></>
-                    }
+                {treeLayout.edges.map(edge => {
+                    return <line key={`${edge.x1}${edge.x2}`} x1={edge.x1} x2={edge.x2} y1={edge.y1} y2={edge.y2} stroke={edge.isRed ? "red" : edgeColor} />
                 })}
-                {nodeLayouts.map(layout => {
-                    return <BTreeGraphNode key={layout.keys.join("")} vals={layout.keys} pos={{x: spacingX * layout.posX, y: spacingY * layout.posY + offsetY}} />
+                {treeLayout.nodes.map(node => {
+                    return <BTreeGraphNode key={node.keys.join("")} vals={node.keys} pos={{ x: node.posX, y: node.posY }} nodeColor={nodeColor} textColor={textColor} />
                 })}
             </svg>
         </div>
     );
-}
+};
+
+export default forwardRef(BTreeGraph);
