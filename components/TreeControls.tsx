@@ -4,7 +4,7 @@ import { Field, Input, RadioGroup, Radio, Button, Popover, PopoverButton, Popove
 import { ChevronDownIcon, CheckIcon, XCircleIcon, ArrowDownOnSquareIcon, AdjustmentsHorizontalIcon } from "@heroicons/react/16/solid";
 import { Cog8ToothIcon, SwatchIcon } from "@heroicons/react/24/outline";
 import { HexColorPicker } from "react-colorful";
-import Slider from "rc-slider";
+import { Slider } from "@/components/Slider";
 import { useState } from "react";
 import clsx from "clsx";
 
@@ -218,85 +218,44 @@ export const TreeControls = (
                         className="w-72 flex flex-col justify-center items-stretch md:w-64 p-4 bg-black rounded-lg ring-1 ring-zinc-800 mx-2"
                     >
                         <p className="text-sm">Horizontal spacing:</p>
-                        <Slider 
+                        <Slider
                             min={20}
-                            max={100}
+                            max={200}
                             value={spacingX}
-                            onChange={(val) => {typeof val === "number" ? setSpacingX(val) : {}}}
+                            setValue={setSpacingX}
                             className="mt-3"
-                            styles={{
-                                "rail": {
-                                    "backgroundColor": "#27272a",
-                                },
-                                "track": {
-                                    "backgroundColor": "#27272a"
-                                },
-                                "handle": {
-                                    "backgroundColor": "#27272a",
-                                    "borderColor": "#a1a1aa"
-                                }
-                            }}
+                            trackClassName="h-1 bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
                         />
                         <p className="text-sm mt-3">Vertical spacing:</p>
-                        <Slider 
-                            min={20}
-                            max={100}
+                        <Slider
+                            min={30}
+                            max={200}
                             value={spacingY}
-                            onChange={(val) => {typeof val === "number" ? setSpacingY(val) : {}}}
+                            setValue={setSpacingY}
                             className="mt-3"
-                            styles={{
-                                "rail": {
-                                    "backgroundColor": "#27272a",
-                                },
-                                "track": {
-                                    "backgroundColor": "#27272a"
-                                },
-                                "handle": {
-                                    "backgroundColor": "#27272a",
-                                    "borderColor": "#a1a1aa"
-                                }
-                            }}
+                            trackClassName="h-1 bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
                         />
-                        <p className="text-sm mt-3">Padding (horizontal):</p>
-                        <Slider 
-                            min={10}
-                            max={100}
+                        <p className="text-sm mt-3">Horizontal padding:</p>
+                        <Slider
+                            min={100}
+                            max={300}
                             value={paddingX}
-                            onChange={(val) => {typeof val === "number" ? setPaddingX(val) : {}}}
+                            setValue={setPaddingX}
                             className="mt-3"
-                            styles={{
-                                "rail": {
-                                    "backgroundColor": "#27272a",
-                                },
-                                "track": {
-                                    "backgroundColor": "#27272a"
-                                },
-                                "handle": {
-                                    "backgroundColor": "#27272a",
-                                    "borderColor": "#a1a1aa",
-                                    
-                                }
-                            }}
+                            trackClassName="h-1 bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
                         />
-                        <p className="text-sm mt-3">Padding (vertical):</p>
-                        <Slider 
-                            min={10}
-                            max={100}
+                        <p className="text-sm mt-3">Vertical padding:</p>
+                        <Slider
+                            min={0}
+                            max={200}
                             value={paddingY}
-                            onChange={(val) => {typeof val === "number" ? setPaddingY(val) : {}}}
+                            setValue={setPaddingY}
                             className="mt-3"
-                            styles={{
-                                "rail": {
-                                    "backgroundColor": "#27272a",
-                                },
-                                "track": {
-                                    "backgroundColor": "#27272a"
-                                },
-                                "handle": {
-                                    "backgroundColor": "#27272a",
-                                    "borderColor": "#a1a1aa"
-                                }
-                            }}
+                            trackClassName="h-1 bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
                         />
                     </PopoverPanel>
                 </Popover>

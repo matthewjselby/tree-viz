@@ -21,7 +21,6 @@ export const Slider = (
     }
 ) => {
     const dummyRef = useRef<HTMLDivElement>(null);
-
     const [handle, setHandle] = useState<HTMLDivElement | null>(null);
     const [container, setContainer] = useState<HTMLDivElement | null>(null);
 
@@ -29,19 +28,21 @@ export const Slider = (
         if (handle && container) {
             const containerBoundingRect = container.getBoundingClientRect();
             console.log(`${value * (containerBoundingRect.width / (max - min)) + containerBoundingRect.left}px`);
-            handle.style.left = `${value * (containerBoundingRect.width / (max - min)) + containerBoundingRect.left}px`;
+            handle.style.left = `${value * (containerBoundingRect.width / (max - min))}px`;
         }
     }
 
     const setUpHandle = useCallback((handle: HTMLDivElement) => {
         setHandle(handle);
-        setInitialPos();
     }, []);
 
     const setUpcontainer = useCallback((container: HTMLDivElement) => {
         setContainer(container);
-        setInitialPos();
     }, []);
+
+    useEffect(() => {
+        setInitialPos();
+    }, [handle, container])
 
     const dragHandle = (event: DragEvent<HTMLDivElement>) => {
         if (handle && container) {
@@ -49,8 +50,8 @@ export const Slider = (
             const handleBoundingRect = handle.getBoundingClientRect();
             if (event.clientX > containerBoundingRect.left && event.clientX < containerBoundingRect.right) {
                 handle.style.left = `${event.clientX - (handleBoundingRect.width / 2) - containerBoundingRect.left}px`;
-                const currentVal = Math.floor((event.clientX - containerBoundingRect.left) * ((max - min + 1) / (containerBoundingRect.right - containerBoundingRect.left)));
-                console.log(currentVal);
+                const currentVal = Math.floor((event.clientX - containerBoundingRect.left) * ((max - min + 1) / (containerBoundingRect.right - containerBoundingRect.left)) + min);
+                setValue(currentVal);
             }
         }
     }
@@ -62,7 +63,7 @@ export const Slider = (
     }
 
     return (
-        <div ref={setUpcontainer} className={`relative w-full flex ml-1 ${className}`}>
+        <div ref={setUpcontainer} className={`relative flex ml-1 ${className}`}>
             <div className={`my-auto w-full ${trackClassName}`} />
             <div ref={dummyRef} className={`invisible ${handleClassName} w-1`} />
             <div ref={setUpHandle} className={`absolute ${handleClassName}`} draggable onDragStart={handleDragStart} onDrag={dragHandle}/>
