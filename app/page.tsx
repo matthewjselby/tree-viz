@@ -5,8 +5,9 @@ import { TreeControls } from "@/components/TreeControls";
 import { BTree } from "@/lib/BTree";
 import { TreeLayout } from "@/lib/TreeLayout";
 import { LLRBTree } from "@/lib/LLRBTree";
-import { useState, useRef, useCallback, useEffect, KeyboardEventHandler } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { ArrowLongRightIcon } from "@heroicons/react/16/solid";
+import { Slider } from "@/components/Slider";
 
 export default function Home() {
     // tree spacing
