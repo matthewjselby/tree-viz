@@ -111,7 +111,7 @@ export default function Home() {
     }
 
     return (
-        <main className="flex h-screen flex-col items-center justify-between gap-10 lg:p-16 md:py-12 p-4">
+        <main className="flex h-dvh flex-col items-center justify-between gap-10 lg:p-16 md:py-12 p-4">
             <h1>{treeType == "23" ? "2-3" : "LLRB"} Tree</h1>
             {
                 addedNodes.length > 0
