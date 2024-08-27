@@ -84,16 +84,16 @@ export const TreeControls = (
                     </PopoverButton>
                     <PopoverPanel
                         anchor={{ to: "top start", gap: 10, offset: -10 }}
-                        className="w-72 flex flex-col items-stretch md:w-64 p-4 bg-black rounded-lg ring-1 ring-zinc-800 mx-2"
+                        className="w-72 flex flex-col items-stretch md:w-64 p-4 bg-zinc-100 dark:bg-black rounded-lg ring-1 ring-zinc-400 dark:ring-zinc-800 mx-2"
                     >
                         <Listbox value={keyType} onChange={setKeyType}>
-                            <ListboxButton className="w-full inline-flex items-center justify-between ring-1 ring-zinc-800 rounded-md py-1.5 px-3 text-sm/6 font-semibold">
+                            <ListboxButton className="w-full inline-flex items-center justify-between ring-1 ring-zinc-400 dark:ring-zinc-800 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-zinc-600 dark:text-zinc-100">
                                 Key Type: {keyType == "string" ? "String" : "Number"}
                                 <ChevronDownIcon className="size-4" />
                             </ListboxButton>
                             <ListboxOptions
                                 anchor="bottom end"
-                                className="w-[var(--button-width)] ring-1 ring-zinc-800 bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-800"
+                                className="w-[var(--button-width)] ring-1 ring-zinc-400 dark:ring-zinc-800 bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-800"
                             >
                                 <ListboxOption
                                     value={"number"}
@@ -115,15 +115,15 @@ export const TreeControls = (
                                 </ListboxOption>
                             </ListboxOptions>
                         </Listbox>
-                        <hr className="border-1 border-zinc-800 my-4" />
+                        <hr className="border-1 border-zinc-400 dark:border-zinc-800 my-4" />
                         <Listbox value={treeType} onChange={setTreeType}>
-                            <ListboxButton className="w-full inline-flex items-center justify-between ring-1 ring-zinc-800 rounded-md py-1.5 px-3 text-sm/6 font-semibold">
+                            <ListboxButton className="w-full inline-flex items-center justify-between ring-1 ring-zinc-400 dark:ring-zinc-800 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-zinc-600 dark:text-zinc-100">
                                 Tree Type: {treeType == "23" ? "2-3" : "LLRB"}
                                 <ChevronDownIcon className="size-4" />
                             </ListboxButton>
                             <ListboxOptions
                                 anchor="bottom end"
-                                className="w-[var(--button-width)] ring-1 ring-zinc-800 bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-800"
+                                className="w-[var(--button-width)] ring-1 ring-zinc-400 dark:ring-zinc-800 bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-800"
                             >
                                 <ListboxOption
                                     value={"llrb"}
@@ -145,9 +145,9 @@ export const TreeControls = (
                                 </ListboxOption>
                             </ListboxOptions>
                         </Listbox>
-                        <hr className="border-1 border-zinc-800 my-4" />
+                        <hr className="border-1 border-zinc-400 dark:border-zinc-800 my-4" />
                         <Button
-                            className="self-end w-full grow flex items-center justify-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-white ring-1 ring-zinc-800 hover:text-blue-500"
+                            className="self-end w-full grow flex items-center justify-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-zinc-600 dark:text-zinc-100 ring-1 ring-zinc-400 dark:ring-zinc-800 hover:text-blue-500"
                             onClick={() => {
                                 if (downloadGraphSvg) {
                                     downloadGraphSvg();
@@ -157,9 +157,9 @@ export const TreeControls = (
                             <ArrowDownOnSquareIcon className="size-4" />
                             Download SVG
                         </Button>
-                        <hr className="border-1 border-zinc-800 my-4" />
+                        <hr className="border-1 border-zinc-400 dark:border-zinc-800 my-4" />
                         <Button
-                            className="self-end w-full grow flex items-center justify-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-white ring-1 ring-zinc-800 hover:text-red-500"
+                            className="self-end w-full grow flex items-center justify-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-zinc-600 dark:text-zinc-100 ring-1 ring-zinc-400 dark:ring-zinc-800 hover:text-red-500"
                             onClick={() => {
                                 clearTree();
                                 setNodeValue("");
@@ -177,27 +177,27 @@ export const TreeControls = (
                     </PopoverButton>
                     <PopoverPanel
                         anchor={{ to: "top start", gap: 10, offset: -10 }}
-                        className="w-72 flex flex-col justify-center items-stretch md:w-64 p-4 bg-black rounded-lg ring-1 ring-zinc-800 mx-2"
+                        className="w-72 flex flex-col justify-center items-stretch md:w-64 p-4 rounded-lg ring-1 ring-zinc-400 dark:ring-zinc-800 mx-2 bg-zinc-100 dark:bg-black"
                     >
                         <RadioGroup value={colorInput} onChange={setColorInput} className="flex gap-2">
                             <Radio
                                 key="node"
                                 value="node"
-                                className="grow rounded-md cursor-pointer flex justify-center bg-zinc-800 px-4 py-1 text-sm data-[checked]:ring-1 data-[checked]:ring-zinc-100"
+                                className="grow rounded-md cursor-pointer flex justify-center bg-zinc-300 dark:bg-zinc-800 px-4 py-1 text-sm data-[checked]:ring-1 data-[checked]:ring-zinc-500 dark:data-[checked]:ring-zinc-100"
                             >
                                 Node
                             </Radio>
                             <Radio
                                 key="edge"
                                 value="edge"
-                                className="grow rounded-md cursor-pointer flex justify-center bg-zinc-800 px-4 py-1 text-sm data-[checked]:ring-1 data-[checked]:ring-zinc-100"
+                                className="grow rounded-md cursor-pointer flex justify-center bg-zinc-300 dark:bg-zinc-800 px-4 py-1 text-sm data-[checked]:ring-1 data-[checked]:ring-zinc-500 dark:data-[checked]:ring-zinc-100"
                             >
                                 Edge
                             </Radio>
                             <Radio
                                 key="text"
                                 value="text"
-                                className="grow rounded-md cursor-pointer flex justify-center bg-zinc-800 px-4 py-1 text-sm data-[checked]:ring-1 data-[checked]:ring-zinc-100"
+                                className="grow rounded-md cursor-pointer flex justify-center bg-zinc-300 dark:bg-zinc-800 px-4 py-1 text-sm data-[checked]:ring-1 data-[checked]:ring-zinc-500 dark:data-[checked]:ring-zinc-100"
                             >
                                 Text
                             </Radio>
@@ -215,7 +215,7 @@ export const TreeControls = (
                     </PopoverButton>
                     <PopoverPanel
                         anchor={{ to: "top start", gap: 10, offset: -10 }}
-                        className="w-72 flex flex-col justify-center items-stretch md:w-64 p-4 bg-black rounded-lg ring-1 ring-zinc-800 mx-2"
+                        className="w-72 flex flex-col justify-center items-stretch md:w-64 p-4 rounded-lg ring-1 ring-zinc-400 dark:ring-zinc-800 mx-2 bg-zinc-100 dark:bg-black"
                     >
                         <p className="text-sm">Horizontal spacing:</p>
                         <Slider
@@ -224,8 +224,8 @@ export const TreeControls = (
                             value={spacingX}
                             setValue={setSpacingX}
                             className="mt-3"
-                            trackClassName="h-1 bg-zinc-800 rounded-full"
-                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
+                            trackClassName="h-1 bg-zinc-300 dark:bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-300 dark:bg-zinc-800 ring-2 ring-zinc-400"
                         />
                         <p className="text-sm mt-3">Vertical spacing:</p>
                         <Slider
@@ -234,8 +234,8 @@ export const TreeControls = (
                             value={spacingY}
                             setValue={setSpacingY}
                             className="mt-3"
-                            trackClassName="h-1 bg-zinc-800 rounded-full"
-                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
+                            trackClassName="h-1 bg-zinc-300 dark:bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-300 dark:bg-zinc-800 ring-2 ring-zinc-400"
                         />
                         <p className="text-sm mt-3">Horizontal padding:</p>
                         <Slider
@@ -244,8 +244,8 @@ export const TreeControls = (
                             value={paddingX}
                             setValue={setPaddingX}
                             className="mt-3"
-                            trackClassName="h-1 bg-zinc-800 rounded-full"
-                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
+                            trackClassName="h-1 bg-zinc-300 dark:bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-300 dark:bg-zinc-800 ring-2 ring-zinc-400"
                         />
                         <p className="text-sm mt-3">Vertical padding:</p>
                         <Slider
@@ -254,8 +254,8 @@ export const TreeControls = (
                             value={paddingY}
                             setValue={setPaddingY}
                             className="mt-3"
-                            trackClassName="h-1 bg-zinc-800 rounded-full"
-                            handleClassName="size-3 rounded-full bg-zinc-800 ring-2 ring-zinc-400"
+                            trackClassName="h-1 bg-zinc-300 dark:bg-zinc-800 rounded-full"
+                            handleClassName="size-3 rounded-full bg-zinc-300 dark:bg-zinc-800 ring-2 ring-zinc-400"
                         />
                     </PopoverPanel>
                 </Popover>
@@ -273,8 +273,8 @@ export const TreeControls = (
                 >
                     <Input
                         className={clsx(
-                            "w-full block rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
-                            "focus:outline-none ring-1 ring-zinc-800"
+                            "w-full block rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6",
+                            "focus:outline-none ring-1 ring-zinc-400 dark:ring-zinc-800"
                         )}
                         value={nodeValue}
                         onChange={(event) => {
@@ -294,7 +294,7 @@ export const TreeControls = (
                 <Button
                     className={
                         clsx(
-                            "justify-self-stretch mt-4 items-center justify-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-white ring-1 ring-zinc-800",
+                            "justify-self-stretch mt-4 items-center justify-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold ring-1 ring-zinc-400 dark:ring-zinc-800",
                             "data-[disabled]:text-red-500"
 
                         )}
