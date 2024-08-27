@@ -93,13 +93,13 @@ export const TreeControls = (
                             </ListboxButton>
                             <ListboxOptions
                                 anchor="bottom end"
-                                className="w-[var(--button-width)] ring-1 ring-zinc-400 dark:ring-zinc-800 bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-800"
+                                className="w-[var(--button-width)] ring-1 ring-zinc-400 dark:ring-zinc-800 bg-zinc-100 dark:bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-300 dark:divide-zinc-800"
                             >
                                 <ListboxOption
                                     value={"number"}
                                     className="group"
                                 >
-                                    <div className="p-2 hover:bg-slate-700/50 flex justify-between">
+                                    <div className="p-2 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 flex justify-between">
                                         <span>Number</span>
                                         <CheckIcon className="size-4 invisible mr-2 group-data-[selected]:visible my-auto" />
                                     </div>
@@ -108,7 +108,7 @@ export const TreeControls = (
                                     value={"string"}
                                     className="group"
                                 >
-                                    <div className="group p-2 hover:bg-slate-700/50 flex justify-between">
+                                    <div className="group p-2 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 flex justify-between">
                                         <span>String</span>
                                         <CheckIcon className="size-4 invisible mr-2 group-data-[selected]:visible my-auto" />
                                     </div>
@@ -123,13 +123,13 @@ export const TreeControls = (
                             </ListboxButton>
                             <ListboxOptions
                                 anchor="bottom end"
-                                className="w-[var(--button-width)] ring-1 ring-zinc-400 dark:ring-zinc-800 bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-800"
+                                className="w-[var(--button-width)] ring-1 ring-zinc-400 dark:ring-zinc-800 bg-zinc-100 dark:bg-black mt-1 rounded-md flex flex-col divide-y divide-zinc-300 dark:divide-zinc-800"
                             >
                                 <ListboxOption
                                     value={"llrb"}
                                     className="group"
                                 >
-                                    <div className="p-2 hover:bg-slate-700/50 flex justify-between">
+                                    <div className="p-2 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 flex justify-between">
                                         <span>Left Leaning Red Black</span>
                                         <CheckIcon className="size-4 invisible mr-2 group-data-[selected]:visible my-auto" />
                                     </div>
@@ -138,7 +138,7 @@ export const TreeControls = (
                                     value={"23"}
                                     className="group"
                                 >
-                                    <div className="group p-2 hover:bg-slate-700/50 flex justify-between">
+                                    <div className="group p-2 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 flex justify-between">
                                         <span>2-3</span>
                                         <CheckIcon className="size-4 invisible mr-2 group-data-[selected]:visible my-auto" />
                                     </div>
